@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SkriptPrototyp.Models.Skript>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <!--Added Button + Textbox to search Skript with {Status} -->
+    @using (Html.BeginForm())
+    {
+        <p>Status: @Html.TextBox("SearchString") <br />
+        <input type="submit" value"Filter" /></p>
+    }
+</p>
+
+
+    @foreach (var item in Model)
+    {
+        <div class=container>
+            <div class="row">
+                <div class="col-sm-4" ng-repeat="tile in tiles">
+                    <div class="panel panel-default">
+                        <div class="panel-header">
+                            <h3 class="title">@Html.DisplayFor(modelItem => item.Name)</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>Name: @Html.DisplayFor(modelItem => item.Name)</p>
+                            <p>Displayname: @Html.DisplayFor(modelItem => item.Displayname)</p>
+                            <p>Description: @Html.DisplayFor(modelItem => item.Discription)</p>
+                            <p>Status: @Html.DisplayFor(modelItem => item.Status)</p>
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+    }
+
+
+
+
+
